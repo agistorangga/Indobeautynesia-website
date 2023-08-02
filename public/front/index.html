@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>login page</title>
+  <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+
+
+<body>
+  <div class="user-sign-in">
+    <div class="container">
+      <h1>Log In</h1>
+      <div  class="Login">
+        <input type="email" name="Email" placeholder="Email" spellcheck="false" required>
+        <i class="fa-solid fa-envelope"></i>
+      </div>
+      <div class="password">
+        <input id="pas" onchange="pass()" type="password" placeholder="Password" spellcheck="false"
+        required>
+        <i onclick="unlocker()" id="lock" class="fa-solid fa-lock"></i>
+          <i onclick="locker()" id="unlock" class="fa-solid fa-lock-open"></i>
+      </div>
+    <div class="user-slection">
+      <button onclick="clicker()"><h3 id="xbutt" class="xxbutt hidden"  >x</h3></button>
+      <h5 class="remember" >Remember me</h5>
+      <h5 class="Forget"> <a href="">Forget password?</a></h5>
+    </div>
+    <div class="user-log-in">
+      <button><h3>Log In</h3></button>
+      <h5>Don't have an account ? <span>Register here</span> </h5>
+    </div>
+    </div>
+  </div>
+  <script src="style/js/script.js"></script>
+</body>
+</html>
+
+</body>
+</html>
