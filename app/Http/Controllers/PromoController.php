@@ -22,6 +22,11 @@ class PromoController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'discount' => 'required',
+        ]);
+
         $filename = "no-image";
         if ($request->hasFile('photo')) {
             $filename = time() . '-' . rand() . '.' . $request->file('photo')->getClientOriginalExtension();
@@ -61,6 +66,11 @@ class PromoController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'discount' => 'required',
+        ]);
+
         $promo = Promo::find($id);
         $promo->name = $request->name;
         $promo->discount = $request->discount;

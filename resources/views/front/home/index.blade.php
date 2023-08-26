@@ -91,7 +91,7 @@
                                                                 class="ri-eye-line"></i></a></li>
                                                 </ul>
                                             </div>
-                                            @if ($item->promo)
+                                            @if ($item->promo && $item->promo_id != null)
                                                 <div class="label"><span>-{{ $item->promo->discount }}%</span></div>
                                             @endif
                                         </div>
@@ -100,7 +100,7 @@
                                                 <a
                                                     href="{{ route('product.detail', [$item->id]) }}">{{ $item->name }}</a>
                                             </h2>
-                                            @if ($item->promo)
+                                            @if ($item->promo && $item->promo_id != null)
                                                 <div class="product-price">
                                                     <span class="before">Rp {{ number_format($item->price) }}</span>
                                                     <span class="current">Rp
@@ -174,7 +174,7 @@
                                                                         class="ri-eye-line"></i></a></li>
                                                         </ul>
                                                     </div>
-                                                    @if ($product->promo)
+                                                    @if ($product->promo && $product->promo_id != null)
                                                         <div class="label">
                                                             <span>-{{ $product->promo->discount }}%</span>
                                                         </div>
@@ -184,13 +184,13 @@
                                                     <h2 class="dot-title">
                                                         <a href="">{{ $product->name }}</a>
                                                     </h2>
-                                                    @if ($product->promo)
+                                                    @if ($product->promo && $product->promo_id != null)
                                                         <div class="product-price">
                                                             <span class="before">Rp
                                                                 {{ number_format($product->price) }}</span>
                                                             <span class="current">
                                                                 Rp
-                                                                {{ number_format(($item->price * (100 - $item->promo->discount)) / 100) }}
+                                                                {{ number_format(($product->price * (100 - $product->promo->discount)) / 100) }}
                                                             </span>
                                                         </div>
                                                     @else
@@ -240,7 +240,7 @@
                                                                     class="ri-eye-line"></i></a></li>
                                                     </ul>
                                                 </div>
-                                                @if ($item->promo)
+                                                @if ($item->promo && $item->promo_id != null)
                                                     <div class="label">
                                                         <span>-{{ $item->promo->discount }}%</span>
                                                     </div>
@@ -307,54 +307,17 @@
         <!-- Banner ends -->
 
         <!-- Social Media starts -->
-        <div class="frominsta">
-            <div class="container wide">
-                <div class="wrap">
-                    <div class="dotgrid scrollto">
-                        <div class="wrapper">
-                            <div class="item">
-                                <div class="dot-image">
-                                    <a href=""></a>
-                                    <div class="thumbnail">
-                                        <img src="assets/indo/brands/azarine.jpeg" alt="">
-                                    </div>
-                                </div>
+        <div class="brands">
+            <div class="logo-wrapper" style="">
+                @foreach ($brands as $brand)
+                    <div class="brand" style="">
+                        <a href="{{ route('product.all') }}?brand_id={{ $brand->id }} ">
+                            <div class="logo-brand">
+                                <img src="{{ asset($brand->image) }}" alt="">
                             </div>
-                            <div class="item">
-                                <div class="dot-image">
-                                    <a href=""></a>
-                                    <div class="thumbnail">
-                                        <img src="assets/indo/brands/safi.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="dot-image">
-                                    <a href=""></a>
-                                    <div class="thumbnail">
-                                        <img src="assets/indo/brands/acnes.jpeg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="dot-image">
-                                    <a href=""></a>
-                                    <div class="thumbnail">
-                                        <img src="assets/indo/brands/implora.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="dot-image">
-                                    <a href=""></a>
-                                    <div class="thumbnail">
-                                        <img src="assets/indo/brands/make-over.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </a>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <!-- Social Media ends -->

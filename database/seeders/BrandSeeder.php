@@ -14,71 +14,53 @@ class BrandSeeder extends Seeder
     {
         //
         Brand::create([
-            'name' => 'Acnes'
+            'name' => 'Acnes',
+            'image' => 'logobrand/logo-acnes.jpeg'
         ]);
 
         Brand::create([
-            'name' => 'Azarine'
+            'name' => 'Azarine',
+            'image' => 'logobrand/logo-azarine.jpg'
         ]);
 
         Brand::create([
-            'name' => 'Emina'
+            'name' => 'Emina',
+            'image' => 'logobrand/logo-emina.png'
         ]);
 
         Brand::create([
-            'name' => 'Garnier'
+            'name' => 'Garnier',
+            'image' => 'logobrand/logo-garnier.png'
         ]);
 
         Brand::create([
-            'name' => 'Make Over'
+            'name' => 'Herborist',
+            'image' => 'logobrand/logo-herborist.png'
         ]);
 
         Brand::create([
-            'name' => 'Herborist'
+            'name' => 'Implora',
+            'image' => 'logobrand/logo-implora.webp'
         ]);
 
         Brand::create([
-            'name' => 'Miranda'
+            'name' => 'Make Over',
+            'image' => 'logobrand/logo-makeover.webp'
         ]);
 
         Brand::create([
-            'name' => 'Purbasari'
+            'name' => 'Miranda',
+            'image' => 'logobrand/logo-miranda.png'
         ]);
 
         Brand::create([
-            'name' => 'Wardah'
+            'name' => 'Safi',
+            'image' => 'logobrand/logo-safi.jpg'
         ]);
 
         Brand::create([
-            'name' => 'Viva'
-        ]);
-
-        Brand::create([
-            'name' => 'Vaseline'
-        ]);
-
-        Brand::create([
-            'name' => 'Himalaya'
-        ]);
-
-        Brand::create([
-            'name' => 'Implora'
-        ]);
-
-        Brand::create([
-            'name' => 'Madame Gie'
-        ]);
-
-        Brand::create([
-            'name' => 'Kahf'
-        ]);
-
-        Brand::create([
-            'name' => 'Skin Aqua'
-        ]);
-
-        Brand::create([
-            'name' => 'Safi'
+            'name' => 'Wardah',
+            'image' => 'logobrand/logo-wardah.png'
         ]);
     }
 }

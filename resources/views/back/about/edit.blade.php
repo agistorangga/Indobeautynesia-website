@@ -12,7 +12,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name">Key</label>
-                                <input class="form-control" id="" name="key" value="{{$data->key}}"></input>
+                                <input class="form-control" id="" name="key" value="{{$data->key}}" readonly></input>
                             </div>
                             <div class="form-group">
                                 <label for="name">Value</label>

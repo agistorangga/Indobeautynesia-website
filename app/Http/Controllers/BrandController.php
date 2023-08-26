@@ -29,9 +29,22 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'image' => 'required|image',
+        ]);
+
+        $filename = "no-image";
+        if($request->hasFile('image')) {
+            $filename = 'photobrand/' . time() . '-' . rand() . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move('photobrand/', $filename);
+        }
+
         Brand::create([
             'name' => $request->name,
+            'image' => $filename
         ]);
+
         return redirect()->route('brand.index');
     }
 
@@ -57,9 +70,18 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Brand::where('id', $id)->update([
-            'name' => $request->name,
-        ]);
+
+        $brand = Brand::find($id);
+        $brand->name = $request->name;
+
+        if($request->hasFile('image')) {
+            $filename = 'photobrand/' . time() . '-' . rand() . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move('photobrand/', $filename);
+            $brand->image = $filename;
+        }
+
+        $brand->save();
+
         return redirect()->route('brand.index');
     }
 

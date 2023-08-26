@@ -7,15 +7,23 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Create Promo</h4>
-
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form action="{{ route('promo.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="name">Name</label>
+                                <label for="name">Name <span>*Required</span></label>
                                 <input class="form-control" type="text" name="name" id="name">
                             </div>
                             <div class="form-group">
-                                <label for="discount">Discount (in %)</label>
+                                <label for="discount">Discount (in %) <span>*Required</span></label>
                                 <input class="form-control" type="number" name="discount" id="discount">
                             </div>
                             <div class="form-group">
@@ -23,7 +31,7 @@
                                 <input class="form-control" type="file" name="photo" id="photo">
                             </div>
                             <div class="form-group">
-                                <label for="products">Product</label>
+                                <label for="products">Product <span>*Required</span></label>
                                 <select class="form-control select2-control" name="products[]" id="products" multiple>
                                     @foreach ($products as $product)
                                         <option value="{{ $product->id }}">{{ $product->name }}</option>

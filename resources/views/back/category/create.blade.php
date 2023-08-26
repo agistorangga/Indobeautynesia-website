@@ -7,11 +7,19 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Create Category</h4>
-
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form action="{{ route('category.store') }}" method="post">
                             @csrf
                             <div class="form-group">
-                                <label for="name">Name</label>
+                                <label for="name">Name <span>*Required</span></label>
                                 <input class="form-control" type="text" name="name" id="name">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>

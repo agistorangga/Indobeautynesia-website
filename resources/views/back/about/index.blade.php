@@ -9,7 +9,7 @@
                         <div class="card-title">
                             <div class="d-flex justify-content-between align-items-center">
                                 List About
-                                <a class="btn btn-primary" href="{{ route('about.create') }}">Create about</a>
+                                {{-- <a class="btn btn-primary" href="{{ route('about.create') }}">Create about</a> --}}
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -33,7 +33,7 @@
 
                                                 <a href="{{ route('about.edit', [$item->id]) }}"><i class="fa-solid fa-pen-to-square" style="color: #1aff5e; margin-right: 10px; font-size: 10px;">Edit</i></a>
 
-                                                <a href="{{ route('about.delete', [$item->id]) }}"><i class="fa-solid fa-trash" style="color: #ff0000; margin-right: 10px; font-size: 10px;">Delete</i></a>
+                                                {{-- <a href="{{ route('about.delete', [$item->id]) }}"><i class="fa-solid fa-trash" style="color: #ff0000; margin-right: 10px; font-size: 10px;">Delete</i></a> --}}
                                             </td>
                                         </tr>
                                     @endforeach

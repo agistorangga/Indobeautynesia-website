@@ -26,9 +26,9 @@ class HomeController extends Controller
         $global = $this->global;
 
         $categories = Category::all();
-        $brands = Brand::all();
+        $brands = Brand::all()->random(5);
         $products = Product::all();
-        $new_arrival = Product::limit(8)->latest()->get();
+        $new_arrival = Product::limit(4)->latest()->get();
         $promo = Promo::where('is_active', true)->get();
         $promo_footer = Promo::where('is_active', true)->latest()->first();
         $packages = Product::join('categories', 'categories.id', '=', 'products.category_id')

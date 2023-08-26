@@ -19,8 +19,9 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>id</th>
-                                        <th>name</th>
+                                        <th>No</th>
+                                        <th>Name</th>
+                                        <th>Image</th>
                                         <th>Action</th>
 
                                     </tr>
@@ -30,6 +31,7 @@
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $item->name }}</td>
+                                            <td><img style="max-width: 40px" src="{{ asset($item->image) }}" alt=""></td>
 
                                             <td>
                                             <a href="{{ route('brand.edit', [$item->id]) }}"><i class="fa-solid fa-pen-to-square" style="color: #1aff5e; margin-right: 10px; font-size: 10px;">Edit</i></a>
