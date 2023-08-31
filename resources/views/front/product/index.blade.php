@@ -129,7 +129,7 @@
                                                         <li><a href=""><i class="ri-eye-line"></i></a></li>
                                                     </ul>
                                                 </div>
-                                                @if ($item->promo)
+                                                @if ($item->promo && $item->promo_id != null)
                                                     <div class="label"><span>-{{ $item->promo->discount }}%</span></div>
                                                 @endif
                                             </div>
@@ -137,7 +137,7 @@
                                                 <h2 class="dot-title">
                                                     <a href="">{{ $item->name }}</a>
                                                 </h2>
-                                                @if ($item->promo)
+                                                @if ($item->promo && $item->promo_id != null)
                                                     <div class="product-price">
                                                         <span class="before">Rp {{ number_format($item->price) }}</span>
                                                         <span class="current">Rp

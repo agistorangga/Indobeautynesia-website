@@ -17,6 +17,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/public/photobrand/*
 /public/photoproduct/*
 /public/photobanner/*
 /public/photopromo/*

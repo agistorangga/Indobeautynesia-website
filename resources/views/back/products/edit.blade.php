@@ -7,22 +7,25 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Edit Product</h4>
-
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form action="{{ route('products.update', [$product->id]) }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="name">Name</label>
+                                <label for="name">Name <span>*Required</span></label>
                                 <input class="form-control" type="text" name="name" id="name"
                                     value="{{ $product->name }}">
                             </div>
                             <div class="form-group">
-                                <label for="subtitle">Subtitle</label>
-                                <input class="form-control" type="text" name="subtitle" id="subtitle"
-                                    value="{{ $product->subtitle }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="category_id">Category</label>
+                                <label for="category_id">Category <span>*Required</span></label>
                                 <select class="form-control select2-control" name="category_id" id="category_id">
                                     <option value="">Select Category</option>
                                     @foreach ($categories as $category)
@@ -32,7 +35,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="category_id">Brand</label>
+                                <label for="category_id">Brand <span>*Required</span></label>
                                 <select class="form-control select2-control" name="brand_id" id="brand_id">
                                     <option value="">Select Brand</option>
                                     @foreach ($brands as $brand)
@@ -51,14 +54,14 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="price">Price</label>
+                                <label for="price">Price <span>*Required</span></label>
                                 <input class="form-control" type="text" name="price" id="name"
                                     value="{{ $product->price }}">
                             </div>
                             <div class="form-group">
-                                <label for="size">Size</label>
-                                <input class="form-control" type="text" name="size" id="size"
-                                    value="{{ $product->size }}">
+                                <label for="package_weight">Package Weight</label>
+                                <input class="form-control" type="text" name="package_weight" id="package_weight"
+                                    value="{{ $product->package_weight }}">
                             </div>
                             <div class="form-group">
                                 <label for="photo">Photo</label>
@@ -73,14 +76,6 @@
                             <div class="form-group">
                                 <label for="description">Description</label>
                                 <textarea class="form-control" name="description" id="" cols="30" rows="10" name="description">{{ $product->description }}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="how_to_use">How to Use</label>
-                                <textarea class="form-control" name="how_to_use" id="" cols="30" rows="10" name="how_to_use">{{ $product->how_to_use }}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="ingredients">Ingredients</label>
-                                <textarea class="form-control" name="ingredients" id="" cols="30" rows="10" name="ingredients">{{ $product->ingredients }}</textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

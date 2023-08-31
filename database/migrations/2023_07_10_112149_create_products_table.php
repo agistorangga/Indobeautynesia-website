@@ -18,12 +18,9 @@ return new class extends Migration
             $table->integer('brand_id');
             $table->boolean('is_bundle');
             $table->string('name');
-            $table->string('subtitle')->nullable();
             $table->string('price');
             $table->text('description')->nullable();
-            $table->text('how_to_use')->nullable();
-            $table->text('ingredients')->nullable();
-            $table->string('size')->nullable();
+            $table->string('package_weight')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
         });

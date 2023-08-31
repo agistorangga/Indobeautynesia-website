@@ -32,6 +32,10 @@ class ProductController extends Controller
             $data->where('category_id', $request->query('category_id'));
         }
 
+        if ($request->has('search')) {
+            $data->where('name', 'like', '%' . $request->query('search') . '%');
+        }
+
         if ($request->has('brand_id')) {
             $data->where('brand_id', $request->query('brand_id'));
         }
@@ -63,28 +67,32 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $brands = Brand::all();
-        return view('back.products.create', compact('categories','brands'));
+        return view('back.products.create', compact('categories', 'brands'));
     }
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'brand_id' => 'required',
+            'category_id' => 'required',
+            'price' => 'required|numeric',
+        ]);
+
         $filename = "no-image";
-        if($request->hasFile('photo')) {
+        if ($request->hasFile('photo')) {
             $filename = time() . '-' . rand() . '.' . $request->file('photo')->getClientOriginalExtension();
             $request->file('photo')->move('photoproduct/', $filename);
         }
 
         $data = Product::create([
             'name' => $request->name,
-            'subtitle' => $request->subtitle,
             'category_id' => $request->category_id,
             'brand_id' => $request->brand_id,
             'is_bundle' => $request->is_bundle ? 1 : 0,
             'price' => $request->price,
-            'size' => $request->size,
+            'package_weight' => $request->package_weight,
             'description' => $request->description,
-            'how_to_use' => $request->how_to_use,
-            'ingredients' => $request->ingredients,
             'photo' => $filename,
         ]);
 
@@ -102,21 +110,25 @@ class ProductController extends Controller
     }
 
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'brand_id' => 'required',
+            'category_id' => 'required',
+            'price' => 'required|numeric',
+        ]);
 
         $product = Product::find($id);
         $product->name = $request->name;
-        $product->subtitle = $request->subtitle;
         $product->category_id = $request->category_id;
         $product->brand_id = $request->brand_id;
         $product->is_bundle = $request->is_bundle ? 1 : 0;
         $product->price = $request->price;
-        $product->size = $request->size;
+        $product->package_weight = $request->package_weight;
         $product->description = $request->description;
-        $product->how_to_use = $request->how_to_use;
-        $product->ingredients = $request->ingredients;
 
-        if($request->hasFile('photo')) {
+        if ($request->hasFile('photo')) {
             $filename = time() . '-' . rand() . '.' . $request->file('photo')->getClientOriginalExtension();
             $request->file('photo')->move('photoproduct/', $filename);
             $product->photo = $filename;

@@ -13,6 +13,8 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
     <!-- js swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('assets/indo/logo/logo.jpg') }}" />
 </head>
@@ -169,6 +171,9 @@
                                         </ul>
                                     </li>
                                     <li><a href="{{ route('about') }}"><span>About</span></a></li>
+                                    <li>
+                                        <i class="ri-search-line search-btn"></i>
+                                    </li>
                                 </ul>
                             </nav>
                             <div class="branding">
@@ -331,6 +336,15 @@
                             </ul>
                         </li>
                         <li><a href="{{ route('about') }}"><span>About</span></a></li>
+                        <li>
+                            <div class="search-mobile">
+                                <input type="text" class="input-search" id=""
+                                    placeholder="search products">
+                                <div class="button">
+                                    <button type="submit" class="primary-btn search-submit-btn">Search</button>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </nav>
                 <div class="button">
@@ -345,10 +359,37 @@
             <i class="ri-whatsapp-line"></i>
         </div>
     </a>
+    <div class="search-modal">
+        <div class="search-bar">
+            <input type="text" class="input-search" id="" placeholder="search products">
+            <div class="button">
+                <button type="submit" class="primary-btn search-submit-btn">Search</button>
+            </div>
+        </div>
+    </div>
     <!-- swiper js -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <!-- custom js -->
     <script src="{{ asset('assets/script.js') }}"></script>
+    <script>
+        $(function() {
+            console.log("ready!");
+
+            $('.search-btn').click(function(e) {
+                $('.search-modal').addClass('active');
+                $('body').css("overflow", "hidden").css("position", "fixed");
+                e.preventDefault();
+            });
+
+            $('.search-submit-btn').click(function(e) {
+                $('.search-modal').removeClass('active');
+                const val = $('.input-search').val()
+                $('body').css("overflow", "auto").css("position", "initial");
+                window.location.href = "{{ route('product.all') }}" + "?search=" + val
+                e.preventDefault();
+            });
+        });
+    </script>
 </body>
 
 </html>

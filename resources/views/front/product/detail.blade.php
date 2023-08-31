@@ -78,9 +78,6 @@
                             <div id="product-description" class="product-about description active">
                                 <div class="text-block">
                                     <h3>{{ $product->name }}</h3>
-                                    <div class="grey-color">
-                                        <p>{{ $product->subtitle }}.</p>
-                                    </div>
                                 </div>
 
                                 <div class="dotgrid">
@@ -92,20 +89,8 @@
                                             </p>
                                         </div>
                                         <div class="list-block">
-                                            <h4>How to use : </h4>
-                                            <ul class="grey-color">
-                                            </ul>
-                                            <p>
-                                                {{ $product->how_to_use }}
-                                            </p>
-                                        </div>
-                                        <div class="list-block">
-                                            <h4>Size :</h4>
-                                            <p class="grey-color">{{ $product->size }}</p>
-                                        </div>
-                                        <div class="list-block">
-                                            <h4>Ingredients : </h4>
-                                            <p class="grey-color">{{ $product->ingredients }}</p>
+                                            <h4>Package Weight :</h4>
+                                            <p class="grey-color">{{ $product->package_weight }}</p>
                                         </div>
                                     </div>
                                 </div>
